@@ -61,6 +61,34 @@ int raise_2(int x)
 }
 
 
+//recursive combo counter
+//should count the number of possible combos in a pixel encoding given the
+//number of channels allowed for modification and the maximum pixel delta allowed
+
+//hope I don't hit a stack overflow on this
+int RCC(int channels, int delta)
+{
+    //when there are no more pixel changes to implement, we are done
+    if(delta == 0)
+    {
+        return 0;
+    }
+
+    int combo_count = raise_2(channels) - 1;
+
+    //the number of pixels to implement has decreased because we have used one (covered another level)
+    delta--;
+
+    //now count all the level combos that can be placed on top of the level we just implemented
+    for(int i = 1; i < channels; i++)
+    {
+        combo_count += (choose(channels, i) * RCC(i, delta));
+    }
+
+    return combo_count;
+}
+
+
 
 
 int main()
