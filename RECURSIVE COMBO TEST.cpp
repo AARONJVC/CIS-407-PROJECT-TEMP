@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<cstdlib>
 
 //factorial method
 //actually negatives are ok but don't anyway
@@ -45,6 +46,21 @@ int choose(int n, int k)
 }
 
 
+//new function to test precise powers of 2 instead of using pow()
+//should only be getting positive input so the abs might drop eventually
+//ideally, this will just be done in the main function to save on function calls
+int raise_2(int x)
+{
+    unsigned x_pos = abs(x);
+
+    unsigned result = 0x1;
+
+    result = int(result << x_pos);
+
+    return result;
+}
+
+
 
 
 int main()
@@ -65,6 +81,13 @@ int main()
     for(int i = 1; i <= n; i++)
     {
         printf("%i choose %2i : %i\n", n, i, choose(n, i));
+    }
+
+    printf("\npower of two tests\n");
+
+    for(int i = 1; i <= 16; i++)
+    {
+        printf("2^%i : %i\n", i, raise_2(i));
     }
 
     return 0;
