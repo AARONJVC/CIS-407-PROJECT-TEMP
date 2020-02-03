@@ -118,5 +118,13 @@ int main()
         printf("2^%i : %i\n", i, raise_2(i));
     }
 
+    printf("\nRCC tests\n");
+
+    int chan = 6;
+    int delt = 4;
+
+    printf("RCC(%i, %i) : %i\n", chan, delt, RCC(chan, delt));
+
+
     return 0;
 }
