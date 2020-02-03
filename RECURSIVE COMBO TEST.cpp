@@ -120,8 +120,8 @@ int main()
 
     printf("\nRCC tests\n");
 
-    int chan = 6;
-    int delt = 4;
+    int chan = 3;
+    int delt = 8;
 
     printf("RCC(%i, %i) : %i\n", chan, delt, RCC(chan, delt));
 
