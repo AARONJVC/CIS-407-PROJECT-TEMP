@@ -88,7 +88,25 @@ int RCC(int channels, int delta)
     return combo_count;
 }
 
+int SCC(int channels, int delta)
+{
+    delta++;
 
+    channels--;
+
+    int result = delta;
+
+    for(int i = 0; i < channels; i++)
+    {
+
+        result *= delta;
+
+    }
+
+    result--;
+
+    return result;
+}
 
 
 int main()
@@ -118,12 +136,36 @@ int main()
         printf("2^%i : %i\n", i, raise_2(i));
     }
 
+    /*
     printf("\nRCC tests\n");
 
     int chan = 3;
     int delt = 8;
 
     printf("RCC(%i, %i) : %i\n", chan, delt, RCC(chan, delt));
+    */
+
+    printf("\nSCC tests\n");
+
+    //goal is to keep delta per color channel under 10% of the full range of values the channel can represent
+
+    //option for RGB profiles with 24b or 32b (don't want to mess with transparency?), encode char in one pixel and num in another pixel
+    int chan = 3;
+    int delt = 6; //6 is well under 1/10th of 256
+
+    printf("SCC(%i, %i) : %i\n", chan, delt, SCC(chan, delt));
+
+    //option for RGB profiles with 16b
+    chan = 6;
+    delt = 2; //2 is under 1/10th of 32
+
+    printf("SCC(%i, %i) : %i\n", chan, delt, SCC(chan, delt));
+
+    //option for RGB profiles with 8b palletized, encode the char across two pixels
+    chan = 2;
+    delt = 16; //16 is under 1/10th of 256
+
+    printf("SCC(%i, %i) : %i\n", chan, delt, SCC(chan, delt));
 
 
     return 0;
