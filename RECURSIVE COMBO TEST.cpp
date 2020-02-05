@@ -162,8 +162,16 @@ int main()
     printf("SCC(%i, %i) : %i\n", chan, delt, SCC(chan, delt));
 
     //option for RGB profiles with 8b palletized, encode the char across two pixels
+    //encode num across another two pixels
     chan = 2;
     delt = 16; //16 is under 1/10th of 256
+
+    printf("SCC(%i, %i) : %i\n", chan, delt, SCC(chan, delt));
+
+    //option for RGB profiles with 4b palletized, encode the char across eight pixels
+    //encode num across another two pixels
+    chan = 8;
+    delt = 1; //1 is under 1/10th of 16
 
     printf("SCC(%i, %i) : %i\n", chan, delt, SCC(chan, delt));
 
