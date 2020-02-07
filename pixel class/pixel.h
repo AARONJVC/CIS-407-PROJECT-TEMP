@@ -6,22 +6,25 @@ class pixel
 {
     public:
         pixel();
+        pixel(unsigned int r, unsigned int g, unsigned int b);
+        pixel(unsigned char r, unsigned char g, unsigned char b);
+        pixel(int t);
 
-        void sR(char);
-        void sG(char);
-        void sB(char);
 
-        char gR();
-        char gG();
-        char gB();
+        void setR(unsigned char);
+        void setG(unsigned char);
+        void setB(unsigned char);
+
+        unsigned char getR();
+        unsigned char getG();
+        unsigned char getB();
 
 
     private:
 
-        char R;
-        char G;
-        char B;
-        unsigned index;
+        unsigned char R;
+        unsigned char G;
+        unsigned char B;
 };
 
 #endif // PIXEL_H
