@@ -1,10 +1,11 @@
 #include "../pixel class/pixel.h"
+#include <stdio.h>
 
 pixel::pixel()
 {
 
 }
-
+/*
 pixel::pixel(unsigned int r, unsigned int g, unsigned int b)
 {
     unsigned char mask = 0xFF;
@@ -14,7 +15,7 @@ pixel::pixel(unsigned int r, unsigned int g, unsigned int b)
     B = (unsigned char)(r & mask);
 
 }
-
+*/
 pixel::pixel(unsigned char r, unsigned char g, unsigned char b)
 {
     R = r;
@@ -55,6 +56,21 @@ unsigned char pixel::getG()
 unsigned char pixel::getB()
 {
     return B;
+}
+
+void pixel::print_chars()
+{
+    printf("%c%c%c", this->R, this->G, this->B);
+}
+
+void pixel::print_hex()
+{
+    printf("%X%X%X", this->R, this->G, this->B);
+}
+
+pixel::~pixel()
+{
+    //dtor
 }
 
 

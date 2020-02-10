@@ -6,7 +6,7 @@ class pixel
 {
     public:
         pixel();
-        pixel(unsigned int r, unsigned int g, unsigned int b);
+        //pixel(unsigned int r, unsigned int g, unsigned int b);
         pixel(unsigned char r, unsigned char g, unsigned char b);
         pixel(int t);
 
@@ -19,6 +19,10 @@ class pixel
         unsigned char getG();
         unsigned char getB();
 
+        void print_chars();
+        void print_hex();
+
+        ~pixel();
 
     private:
 

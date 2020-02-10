@@ -27,7 +27,7 @@ char bitmap::get_E()
 
 void print()
 {
-    printf
+    //printf
 }
 
 bitmap::~bitmap()
