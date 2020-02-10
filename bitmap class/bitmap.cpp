@@ -25,10 +25,65 @@ char bitmap::get_E()
     return encoding;
 }
 
-void print()
+unsigned int bitmap::get_N()
 {
-    //printf
+    return numcolors;
 }
+
+void bitmap::print()
+{
+    for(unsigned int i = 0; i < height; i++)
+    {
+        for(unsigned int j = 0; j < width; j++)
+        {
+            pixel_arr[i][j].print_chars();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+pixel ** malloc_pixels()
+{
+
+}
+
+void free_pixels()
+{
+
+}
+
+pixel * malloc_colors()
+{
+
+}
+
+void free_colors()
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 bitmap::~bitmap()
 {

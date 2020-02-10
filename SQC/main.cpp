@@ -4,10 +4,9 @@
 
 using namespace std;
 
-int main()
+//testing pixel print
+void pixel_print_test()
 {
-    cout << "Hello world!" << endl;
-
     pixel A_pixel = pixel('A','A','A');
     pixel ABC_pixel = pixel('A','B','C');
     pixel ZZZ_pixel = pixel('Z','Z','Z');
@@ -45,6 +44,17 @@ int main()
     test_pixel.print_hex();
 
     printf("\n");
+}
+
+
+
+
+
+int main()
+{
+    cout << "Hello world!" << endl;
+
+    pixel_print_test();
 
     return 0;
 }
