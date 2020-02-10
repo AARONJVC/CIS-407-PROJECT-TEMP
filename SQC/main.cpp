@@ -46,13 +46,37 @@ void pixel_print_test()
     printf("\n");
 }
 
-void bitmap_malloc_free_test(unsigned int h, unsigned int w, unsigned int e)
+void bitmap_init_test(unsigned int h, unsigned int w, char e)
 {
     bitmap test_bmp = bitmap(h, w, e);
 
+    printf("\nExpect height: %i\nActual height: %i\n", h, test_bmp.get_H());
 
+    printf("\nExpect width: %i\nActual width: %i\n", w, test_bmp.get_W());
 
+    printf("\nExpect encoding: %c\nActual encoding: %c\n", e, test_bmp.get_E());
 
+    printf("\nExpect numcolors: %i\nActual numcolors: %i\n", 0, test_bmp.get_N());
+
+    if((test_bmp.get_H() == 0 || test_bmp.get_W() == 0) && test_bmp.pixel_arr == nullptr)
+    {
+        printf("\nPixel array is null as expected\n");
+    }
+    else if(test_bmp.get_H() == 0 || test_bmp.get_W() == 0)
+    {
+        printf("\nPixel array NOT null and H/W are zero\n");
+    }
+
+    if(test_bmp.colors_arr == nullptr)
+    {
+        printf("\nColors array is null as expected\n");
+    }
+    else
+    {
+        printf("\nColors array is NOT null\n");
+    }
+
+    return;
 }
 
 
@@ -61,7 +85,17 @@ int main()
 {
     //cout << "Hello world!" << endl;
 
-    pixel_print_test();
+    //pixel_print_test();
+
+    bitmap_init_test(0,0,'Q');
+
+    bitmap_init_test(1,0,'P');
+
+    bitmap_init_test(0,1,'Z');
+
+    bitmap_init_test(1,1,'A');
+
+    bitmap_init_test(10,10,'B');
 
     return 0;
 }

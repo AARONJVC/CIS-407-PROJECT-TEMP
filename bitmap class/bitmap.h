@@ -9,7 +9,11 @@ class bitmap
 {
     public:
 
-        bitmap(unsigned int, unsigned int, unsigned int);
+        bitmap(unsigned int, unsigned int, char);
+
+        pixel ** pixel_arr;
+
+        pixel * colors_arr;
 
         void fill_pixels();
 
@@ -25,8 +29,6 @@ class bitmap
         ~bitmap();
 
     private:
-
-        pixel ** pixel_arr;
 
         //The width and height of the image
         //shouldn't ever be a reason to modify these once they are initialized in the constructor, so no setters
@@ -47,8 +49,6 @@ class bitmap
 
         unsigned int numcolors;
 
-        pixel * colors_arr;
-
         //private helper functions that are too dangerous to be public
 
         pixel ** malloc_pixels(unsigned int, unsigned int);
@@ -56,10 +56,6 @@ class bitmap
 
         pixel * malloc_colors();
         void free_colors();
-
-
-
-
 };
 
 #endif // BITMAP_H

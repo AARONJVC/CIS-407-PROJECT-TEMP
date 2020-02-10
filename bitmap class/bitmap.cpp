@@ -2,7 +2,7 @@
 #include "malloc.h"
 #include <stdio.h>
 
-bitmap::bitmap(unsigned int h, unsigned int w, unsigned int e)
+bitmap::bitmap(unsigned int h, unsigned int w, char e)
 {
     this->pixel_arr = nullptr;
 
@@ -22,8 +22,10 @@ bitmap::bitmap(unsigned int h, unsigned int w, unsigned int e)
     }
     else
     {
-        malloc_pixels(height, width);
+        //malloc_pixels(height, width);
     }
+
+    return;
 }
 
 void bitmap::fill_pixels()
@@ -139,5 +141,5 @@ void bitmap::free_colors()
 
 bitmap::~bitmap()
 {
-    free_pixels();
+    //free_pixels();
 }
