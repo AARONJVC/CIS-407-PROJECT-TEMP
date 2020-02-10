@@ -104,13 +104,22 @@ void bmp_init_print_test()
     bitmap_init_test(1,1,'T');
 }
 
-void bmp_printing()
+void bmp_printing(unsigned int h, unsigned int w)
 {
-    bitmap print_test = bitmap(5, 5, 'T');
 
-    print_test.fill_pixels();
+    try
+    {
+        bitmap print_test = bitmap(h, w, 'T');
 
-    print_test.print();
+        print_test.fill_pixels();
+
+        print_test.print();
+    }
+    catch(int ex)
+    {
+        printf("\nException encountered: %i\n", ex);
+    }
+
 }
 
 int main()
@@ -121,7 +130,20 @@ int main()
 
     //bmp_init_print_test();
 
-    bmp_printing();
+    bmp_printing(5, 5);
+
+    bmp_printing(1, 1);
+
+    bmp_printing(0, 0);
+
+    bmp_printing(0, 5);
+
+    bmp_printing(5, 0);
+
+    bmp_printing(2, 1);
+
+    bmp_printing(4, 7);
+
 
 
 
