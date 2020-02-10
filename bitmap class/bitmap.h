@@ -18,7 +18,7 @@ class bitmap
 
         char get_E();
 
-        unsigned int get_N()
+        unsigned int get_N();
 
         void print();
 

@@ -1,4 +1,6 @@
 #include "bitmap.h"
+#include "malloc.h"
+#include <stdio.h>
 
 bitmap::bitmap(unsigned int h, unsigned int w, unsigned int e)
 {
@@ -41,49 +43,52 @@ void bitmap::print()
     }
 }
 
+//allocates memory for a height * width array of pixels
+pixel ** bitmap::malloc_pixels()
+{
+    this->pixel_arr = (pixel**)malloc(sizeof(pixel *) * height);
 
+    for(unsigned int i = 0; i < height; i++)
+    {
+        pixel * temp = (pixel*)malloc(sizeof(pixel) * width);
 
+        this->pixel_arr[i] = temp;
+    }
 
+    return this->pixel_arr;
+}
 
+void bitmap::free_pixels()
+{
+    for(unsigned int i = 0; i < height; i++)
+    {
+        pixel * temp = this->pixel_arr[i];
 
+        free(temp);
 
+        if(temp != nullptr)
+        {
+            printf("\n\nFREE ERROR IN A WIDTH ARRAY\n\n");
+        }
+    }
 
+    free(this->pixel_arr);
 
+    if(this->pixel_arr != nullptr)
+    {
+        printf("\n\nFREE ERROR IN A HEIGHT ARRAY\n\n");
+    }
+}
 
+pixel * bitmap::malloc_colors()
+{
+    return nullptr;
+}
 
-
-pixel ** malloc_pixels()
+void bitmap::free_colors()
 {
 
 }
-
-void free_pixels()
-{
-
-}
-
-pixel * malloc_colors()
-{
-
-}
-
-void free_colors()
-{
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 bitmap::~bitmap()
 {
