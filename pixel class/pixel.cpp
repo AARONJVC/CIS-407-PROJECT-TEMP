@@ -65,7 +65,7 @@ void pixel::print_chars()
 
 void pixel::print_hex()
 {
-    printf("%X%X%X", this->R, this->G, this->B);
+    printf("0x|%2X|%2X|%2X", this->R, this->G, this->B);
 }
 
 pixel::~pixel()
