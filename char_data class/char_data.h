@@ -11,7 +11,7 @@ class char_data
         int getI();
 
         void setC(char);
-        void setI(int)
+        void setI(int);
 
         ~char_data();
 

@@ -10,7 +10,7 @@ int pixel_testing()
 
 
 
-    printf()
+    //printf()
 
     return 0;
 }

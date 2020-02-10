@@ -7,7 +7,18 @@
 
 1581104809 c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\pixel class\pixel.h
 
-1581103920 source:c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\tools and experiments\pixel testing.cpp
+1581358586 source:c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\tools and experiments\pixel testing.cpp
 	<stdio.h>
 	"../pixel class/pixel.h"
+
+1581358626 source:c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\bitmap class\bitmap.cpp
+	"bitmap.h"
+
+1581358663 c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\bitmap class\bitmap.h
+	"../pixel class/pixel.h"
+
+1581358303 source:c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\char_data class\char_data.cpp
+	"char_data.h"
+
+1581358152 c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\char_data class\char_data.h
 

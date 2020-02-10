@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="char_data class" />
+					<Add directory="bitmap class" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="char_data class" />
+					<Add directory="bitmap class" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,6 +36,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../bitmap class/bitmap.cpp" />
+		<Unit filename="../bitmap class/bitmap.h" />
 		<Unit filename="../char_data class/char_data.cpp" />
 		<Unit filename="../char_data class/char_data.h" />
 		<Unit filename="../pixel class/pixel.cpp" />

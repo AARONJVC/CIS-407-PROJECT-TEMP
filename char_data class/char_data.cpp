@@ -5,11 +5,25 @@ char_data::char_data()
     //ctor
 }
 
-char getC();
-        int getI();
+char char_data::getC()
+{
 
-        void setC(char);
-        void setI(int)
+}
+
+int char_data::getI()
+{
+
+}
+
+void char_data::setC(char)
+{
+
+}
+
+void char_data::setI(int)
+{
+
+}
 
 char_data::~char_data()
 {
