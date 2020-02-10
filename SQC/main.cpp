@@ -89,14 +89,8 @@ void bitmap_init_test(unsigned int h, unsigned int w, char e)
     }
 }
 
-
-
-int main()
+void bmp_init_print_test()
 {
-    //cout << "Hello world!" << endl;
-
-    //pixel_print_test();
-
     bitmap_init_test(0,0,'Q');
 
     bitmap_init_test(1,0,'P');
@@ -108,6 +102,28 @@ int main()
     bitmap_init_test(10,10,'B');
 
     bitmap_init_test(1,1,'T');
+}
+
+void bmp_printing()
+{
+    bitmap print_test = bitmap(5, 5, 'T');
+
+    print_test.fill_pixels();
+
+    print_test.print();
+}
+
+int main()
+{
+    //cout << "Hello world!" << endl;
+
+    //pixel_print_test();
+
+    //bmp_init_print_test();
+
+    bmp_printing();
+
+
 
     return 0;
 }

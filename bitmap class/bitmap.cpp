@@ -41,6 +41,14 @@ void bitmap::fill_pixels()
     {
         this->pixel_arr[i] = new pixel[width];
     }
+
+    for(unsigned int i = 0; i < height; i++)
+    {
+        for(unsigned int j = 0; j < width; j++)
+        {
+            pixel_arr[i][j] = pixel('R', 'G', 'B');
+        }
+    }
 }
 
 unsigned int bitmap::get_H()
@@ -70,7 +78,11 @@ void bitmap::print()
         for(unsigned int j = 0; j < width; j++)
         {
             pixel_arr[i][j].print_chars();
+
+            printf(" ");
         }
+
+        printf("\n\n");
     }
 }
 
