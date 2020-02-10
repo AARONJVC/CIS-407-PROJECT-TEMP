@@ -51,7 +51,7 @@ class bitmap
 
         //private helper functions that are too dangerous to be public
 
-        pixel ** malloc_pixels();
+        pixel ** malloc_pixels(unsigned int, unsigned int);
         void free_pixels();
 
         pixel * malloc_colors();

@@ -46,13 +46,20 @@ void pixel_print_test()
     printf("\n");
 }
 
+void bitmap_malloc_free_test(unsigned int h, unsigned int w, unsigned int e)
+{
+    bitmap test_bmp = bitmap(h, w, e);
 
+
+
+
+}
 
 
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    //cout << "Hello world!" << endl;
 
     pixel_print_test();
 
