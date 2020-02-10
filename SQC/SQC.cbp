@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="char_data class" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="char_data class" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,6 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../char_data class/char_data.cpp" />
+		<Unit filename="../char_data class/char_data.h" />
 		<Unit filename="../pixel class/pixel.cpp" />
 		<Unit filename="../pixel class/pixel.h" />
 		<Unit filename="../tools and experiments/pixel testing.cpp" />
