@@ -48,35 +48,45 @@ void pixel_print_test()
 
 void bitmap_init_test(unsigned int h, unsigned int w, char e)
 {
-    bitmap test_bmp = bitmap(h, w, e);
-
-    printf("\nExpect height: %i\nActual height: %i\n", h, test_bmp.get_H());
-
-    printf("\nExpect width: %i\nActual width: %i\n", w, test_bmp.get_W());
-
-    printf("\nExpect encoding: %c\nActual encoding: %c\n", e, test_bmp.get_E());
-
-    printf("\nExpect numcolors: %i\nActual numcolors: %i\n", 0, test_bmp.get_N());
-
-    if((test_bmp.get_H() == 0 || test_bmp.get_W() == 0) && test_bmp.pixel_arr == nullptr)
+    try
     {
-        printf("\nPixel array is null as expected\n");
-    }
-    else if(test_bmp.get_H() == 0 || test_bmp.get_W() == 0)
-    {
-        printf("\nPixel array NOT null and H/W are zero\n");
-    }
+        bitmap test_bmp = bitmap(h, w, e);
 
-    if(test_bmp.colors_arr == nullptr)
-    {
-        printf("\nColors array is null as expected\n");
-    }
-    else
-    {
-        printf("\nColors array is NOT null\n");
-    }
+        printf("\nExpect height: %i\nActual height: %i\n", h, test_bmp.get_H());
 
-    return;
+        printf("\nExpect width: %i\nActual width: %i\n", w, test_bmp.get_W());
+
+        printf("\nExpect encoding: %c\nActual encoding: %c\n", e, test_bmp.get_E());
+
+        printf("\nExpect numcolors: %i\nActual numcolors: %i\n", 0, test_bmp.get_N());
+
+        if((test_bmp.get_H() != 0 && test_bmp.get_W() != 0))
+        {
+            test_bmp.fill_pixels();
+        }
+
+        if((test_bmp.get_H() == 0 || test_bmp.get_W() == 0) && test_bmp.pixel_arr == nullptr)
+        {
+            printf("\nPixel array is null as expected\n");
+        }
+        else if(test_bmp.get_H() == 0 || test_bmp.get_W() == 0)
+        {
+            printf("\nPixel array NOT null and H/W are zero\n");
+        }
+
+        if(test_bmp.color_arr == nullptr)
+        {
+            printf("\nColors array is null as expected\n");
+        }
+        else
+        {
+            printf("\nColors array is NOT null\n");
+        }
+    }
+    catch(int ex)
+    {
+        printf("\nException encountered: %i\n", ex);
+    }
 }
 
 
@@ -96,6 +106,8 @@ int main()
     bitmap_init_test(1,1,'A');
 
     bitmap_init_test(10,10,'B');
+
+    bitmap_init_test(1,1,'T');
 
     return 0;
 }

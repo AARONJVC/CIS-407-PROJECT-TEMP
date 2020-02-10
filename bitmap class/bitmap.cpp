@@ -1,36 +1,46 @@
 #include "bitmap.h"
 #include "malloc.h"
 #include <stdio.h>
+#include <stdexcept>
+
+using namespace std;
 
 bitmap::bitmap(unsigned int h, unsigned int w, char e)
 {
     this->pixel_arr = nullptr;
 
-    this->colors_arr = nullptr;
+    this->color_arr = nullptr;
 
     numcolors = 0;
 
     encoding = e;
 
-    height = h;
-
-    width = w;
-
-    if(height == 0 || width == 0)
+    if(h == 0 || w == 0)
     {
-        printf("\n\nINVALID INPUT\n\n");
+        throw 20;
     }
     else
     {
-        //malloc_pixels(height, width);
+        height = h;
+
+        width = w;
     }
 
-    return;
+    if(e != TWENTYFOUR_BIT_RGB && e != SIXTEEN_BIT_RGB && e != EIGHT_BIT_PALLETIZED && e != FOUR_BIT_PALLETIZED)
+    {
+        throw 30;
+    }
+
 }
 
 void bitmap::fill_pixels()
 {
+    this->pixel_arr = new pixel*[height];
 
+    for(unsigned int i = 0; i < height; i++)
+    {
+        this->pixel_arr[i] = new pixel[width];
+    }
 }
 
 unsigned int bitmap::get_H()
@@ -64,6 +74,7 @@ void bitmap::print()
     }
 }
 
+/*
 //allocates memory for a height * width array of pixels
 pixel ** bitmap::malloc_pixels(unsigned int h, unsigned int w)
 {
@@ -107,7 +118,7 @@ void bitmap::free_pixels()
         free(temp);
 
 
-        /*
+
         temp = nullptr;
 
 
@@ -115,31 +126,47 @@ void bitmap::free_pixels()
         {
             printf("\n\nFREE ERROR IN A WIDTH ARRAY\n\n");
         }
-        */
+
     }
 
     free(this->pixel_arr);
 
 
-    /*
+
     if(this->pixel_arr != nullptr)
     {
         printf("\n\nFREE ERROR IN A HEIGHT ARRAY\n\n");
     }
-    */
+
 }
+
 
 pixel * bitmap::malloc_colors()
 {
     return nullptr;
 }
 
+
 void bitmap::free_colors()
 {
 
 }
+*/
 
 bitmap::~bitmap()
 {
-    //free_pixels();
+    if(this->color_arr != nullptr)
+    {
+        delete[] this->color_arr;
+    }
+
+    if(this->pixel_arr != nullptr)
+    {
+        for(unsigned int i = 0; i < height; i++)
+        {
+            delete[] this->pixel_arr[i];
+        }
+
+        delete[] this->pixel_arr;
+    }
 }
