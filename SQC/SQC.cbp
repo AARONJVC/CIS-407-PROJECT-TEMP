@@ -42,6 +42,7 @@
 		<Unit filename="../char_data class/char_data.h" />
 		<Unit filename="../pixel class/pixel.cpp" />
 		<Unit filename="../pixel class/pixel.h" />
+		<Unit filename="../tools and experiments/RECURSIVE COMBO TEST.cpp" />
 		<Unit filename="../tools and experiments/pixel testing.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>

@@ -2,7 +2,8 @@
 #include<cstdlib>
 
 //factorial method
-//actually negatives are ok but don't anyway
+//should be able to ignore negatives, not like I'm going to give it any
+//should probably filter that though
 int fact(int n)
 {
     int result = 1; //0!
@@ -16,10 +17,9 @@ int fact(int n)
 }
 
 //Can't have k greater than n
-//this combinatoric method will help me find an efficient data storage encoding in the pixels (I hope)
+//this combinatoric method will help me find an efficient data storage encoding in the pixels
 int choose(int n, int k)
 {
-    //pigeonhole principle!
     if(k > n)
     {
         return -1;
@@ -61,6 +61,10 @@ int raise_2(int x)
 }
 
 
+//THIS ISN'T EVEN GOING TO GET USED
+//probably some dumb math mistake in there somewhere
+//basically, it tries to count all the possible combos of pixel channel additions vertically (by horizontal layers)
+
 //recursive combo counter
 //should count the number of possible combos in a pixel encoding given the
 //number of channels allowed for modification and the maximum pixel delta allowed
@@ -88,10 +92,16 @@ int RCC(int channels, int delta)
     return combo_count;
 }
 
+//much simpler algorithm that counts combinations horizontally (channel by channel)
+//the math is: ((d + 1)^c) - 1
+//counts every possible combination of as many as d or as few as 0 bits added to each channel (for c channels, so raised to c power)
+//and then eliminates the forbidden single case of all zeroes, which we cannot use, since that indicates an unmodified pixel
 int SCC(int channels, int delta)
 {
+
     delta++;
 
+    //d+1 is already (d+1)^1
     channels--;
 
     int result = delta;
@@ -103,6 +113,7 @@ int SCC(int channels, int delta)
 
     }
 
+    //-1
     result--;
 
     return result;
