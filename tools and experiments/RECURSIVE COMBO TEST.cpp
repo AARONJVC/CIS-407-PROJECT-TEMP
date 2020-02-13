@@ -156,6 +156,8 @@ int main()
     printf("RCC(%i, %i) : %i\n", chan, delt, RCC(chan, delt));
     */
 
+    //determining which encodings are feasible and how many bits will be required per channel
+    //which in turn determines how many channels across how many pixels will be needed to make the changes discreet
     printf("\nSCC tests\n");
 
     //goal is to keep delta per color channel under 10% of the full range of values the channel can represent
