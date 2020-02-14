@@ -93,12 +93,12 @@ bool bitmap::read_file(string filename)
 
     unsigned int total_colors = test[46] | (test[47] << 8) | (test[48] << 16) | (test[49] << 24);
 
-    cout << endl << file_size << endl;
-    cout << endl << file_offset << endl;
-    cout << endl << file_width << endl;
-    cout << endl << file_height << endl;
-    cout << endl << bpp << endl;
-    cout << endl << total_colors << endl;
+    cout << endl << "Bytes: " << file_size << endl;
+    cout << endl << "Header bytes: " << file_offset << endl;
+    cout << endl << "Pixel width: " << file_width << endl;
+    cout << endl << "Pixel height: " << file_height << endl;
+    cout << endl << "Encoding: " << bpp << "b" << endl;
+    cout << endl << "Palette colors: " << total_colors << endl;
 
     bool read_more = true;
 
@@ -209,11 +209,20 @@ bool bitmap::read_file(string filename)
             }
         }
 
+        for(int i = 0; i < file_height; i++)
+        {
+            delete[] pixel_channels[i];
+        }
+
+        delete[] pixel_channels;
+
 
 
     }
 
     read_bmp.close();
+
+
 
     width = file_width;
     height = file_height;
