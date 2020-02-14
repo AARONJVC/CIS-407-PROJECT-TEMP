@@ -56,17 +56,48 @@ void bitmap::fill_pixels()
 
 bool bitmap::read_file(string filename)
 {
-    ifstream read_bmp;
-
-    read_bmp.open(filename);
+    fstream read_bmp(filename, fstream::in);
 
     char test;
+    int i = 0;
 
-    cin >> test;
+    while(read_bmp >> noskipws >> hex >> test)
+    {
+        i++;
+
+        printf("%X ", test);
+
+        if((i % 16) == 0)
+        {
+            printf("\n");
+        }
+    }
+
+
+
+    //printf("\nFilestream created\n");
+
+    //read_bmp.open(filename);
+
+    //printf("\nfile opened\n");
+
+    //char test;
+
+    //char[1];
+
+    //read_bmp >> test;
+
+    //printf("\nchar read\n");
 
     read_bmp.close();
 
-    printf("\n%c\n", test);
+    //printf("\nfile closed\n");
+
+    //printf("\n%c\n", test);
+
+    //cout << endl << test << endl;
+
+    //printf("\nchar printed\n");
 
     return 0;
 }
