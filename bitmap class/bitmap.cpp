@@ -83,11 +83,7 @@ bool bitmap::read_file(string filename)
     //BMP encoding stores the file size in little endian format
     unsigned int file_size = test[2] | (test[3] << 8) | (test[4] << 16) | (test[5] << 24);
 
-    cout << endl << file_size << endl;
-
     unsigned int file_offset = test[10] | (test[11] << 8) | (test[12] << 16) | (test[13] << 24);
-
-    cout << endl << file_offset << endl;
 
     int file_width = test[18] | (test[19] << 8) | (test[20] << 16) | (test[21] << 24);
 
@@ -95,12 +91,13 @@ bool bitmap::read_file(string filename)
 
     unsigned int bpp = test[28] | (test[29] << 8);
 
+    unsigned int total_colors = test[46] | (test[47] << 8) | (test[48] << 16) | (test[49] << 24);
+
+    cout << endl << file_size << endl;
+    cout << endl << file_offset << endl;
     cout << endl << file_width << endl;
     cout << endl << file_height << endl;
     cout << endl << bpp << endl;
-
-    unsigned int total_colors = test[46] | (test[47] << 8) | (test[48] << 16) | (test[49] << 24);
-
     cout << endl << total_colors << endl;
 
     bool read_more = true;
@@ -175,6 +172,18 @@ bool bitmap::read_file(string filename)
             printf("\n");
         }
 
+        printf("\n\n");
+
+        for(int i = 0; i < file_height; i++)
+        {
+            for(int j = 0; j < byte_width; j++)
+            {
+                printf("%02X ", pixel_channels[i][j]);
+            }
+
+            printf("\n");
+        }
+
 
         //now to convert these chars to pixels...
 
@@ -194,11 +203,9 @@ bool bitmap::read_file(string filename)
             {
                 int k = j * 3;
 
-                pixel_arr[i][j] = pixel(pixel_channels[i][k + 2], pixel_channels[i][k + 1], pixel_channels[i][k]);
+                pixel_arr[i][j] = pixel((pixel_channels[i][k + 2]), (pixel_channels[i][k + 1]), (pixel_channels[i][k]));
 
-                //pixel_arr[i][j].setB();
-                //pixel_arr[i][j].setG(pixel_channels[i][k + 1]);
-                //pixel_arr[i][j].setR(pixel_channels[i][k + 2]);
+                //printf("\n%02X %02X %02X\n", (pixel_channels[i][k + 2]), (pixel_channels[i][k + 1]), (pixel_channels[i][k]));
             }
         }
 
@@ -211,7 +218,7 @@ bool bitmap::read_file(string filename)
     width = file_width;
     height = file_height;
 
-    return 0;
+    return true;
 }
 
 unsigned int bitmap::get_H()
@@ -236,11 +243,13 @@ unsigned int bitmap::get_N()
 
 void bitmap::print()
 {
+
+
     for(unsigned int i = 0; i < height; i++)
     {
         for(unsigned int j = 0; j < width; j++)
         {
-            pixel_arr[i][j].print_chars();
+            pixel_arr[i][j].print_hex();
 
             printf(" ");
         }

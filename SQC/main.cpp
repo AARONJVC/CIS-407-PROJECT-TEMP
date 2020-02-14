@@ -130,6 +130,8 @@ bool bmp_read_test(string filename)
 
     if(success)
     {
+        printf("\n\n");
+
         read_test.print();
     }
 
