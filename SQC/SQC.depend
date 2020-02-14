@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1581654861 source:c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\sqc\main.cpp
+1581657395 source:c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\sqc\main.cpp
 	<iostream>
 	"../pixel class/pixel.h"
 	"../bitmap class/bitmap.h"
@@ -14,7 +14,7 @@
 	<stdio.h>
 	"../pixel class/pixel.h"
 
-1581656771 source:c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\bitmap class\bitmap.cpp
+1581658388 source:c:\users\aavan\documents\hub\academic\schoolwork\2019-2020 uo\2 winter term 2020\cis 407\project\bitmap class\bitmap.cpp
 	"bitmap.h"
 	<stdio.h>
 	<stdexcept>

@@ -8,6 +8,8 @@
 
 using namespace std;
 
+#define HEADER_LENGTH 54
+
 bitmap::bitmap(unsigned int h, unsigned int w, char e)
 {
     this->pixel_arr = nullptr;
@@ -58,48 +60,37 @@ bool bitmap::read_file(string filename)
 {
     fstream read_bmp(filename, fstream::in);
 
-    int length = 54;
+    unsigned char test[HEADER_LENGTH];
 
-    unsigned char test[length];
-
-    for(int i = 0; i < length; i++)
+    for(int i = 0; i < HEADER_LENGTH; i++)
     {
         read_bmp >> noskipws >> hex >> test[i];
     }
 
-    /*
-    while(read_bmp >> noskipws >> hex >> test)
+    string file_title = "";
+
+    file_title.append(1, static_cast<char>(test[0]));
+
+    file_title.append(1, static_cast<char>(test[1]));
+
+    cout << endl << file_title << endl;
+
+    if(file_title == "BM")
     {
-        i++;
-
-        printf("%02X ", test);
-
-        if((i % 16) == 0)
-        {
-            printf("\n");
-        }
+        cout << endl << "Confirmed BMP file" << endl;
     }
-    */
+
+    unsigned int file_size = test[2] | (test[3] << 8) | (test[4] << 16) | (test[5] << 24);
+
+    cout << endl << file_size << endl;
 
 
 
-    //printf("\nFilestream created\n");
 
-    //read_bmp.open(filename);
-
-    //printf("\nfile opened\n");
-
-    //char test;
-
-    //char[1];
-
-    //read_bmp >> test;
-
-    //printf("\nchar read\n");
 
     read_bmp.close();
 
-    for(int j = 0; j < length; j++)
+    for(int j = 0; j < HEADER_LENGTH; j++)
     {
         if((j % 16) == 0)
         {

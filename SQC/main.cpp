@@ -151,8 +151,6 @@ int main()
 
     //bmp_printing(4, 7);
 
-    printf("\nExpect 41\n");
-
     bmp_read_test("../TEST BITMAPS/2x2 24b.bmp");
 
     return 0;
