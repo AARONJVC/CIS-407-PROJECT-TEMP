@@ -120,7 +120,7 @@ int SCC(int channels, int delta)
 }
 
 
-int main()
+int run_tests()
 {
     printf("Factorial tests\n");
 

@@ -1,7 +1,9 @@
 #include "bitmap.h"
-#include "malloc.h"
+//#include "malloc.h"
 #include <stdio.h>
 #include <stdexcept>
+#include "string"
+#include "fstream"
 
 using namespace std;
 
@@ -49,6 +51,18 @@ void bitmap::fill_pixels()
             pixel_arr[i][j] = pixel('R', 'G', 'B');
         }
     }
+}
+
+bool bitmap::read_file(string filename)
+{
+
+
+
+
+
+
+
+    return true;
 }
 
 unsigned int bitmap::get_H()

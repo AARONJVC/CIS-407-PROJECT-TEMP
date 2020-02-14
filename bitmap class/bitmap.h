@@ -1,4 +1,7 @@
 #include "../pixel class/pixel.h"
+#include "string"
+
+using namespace std;
 
 #ifndef BITMAP_H
 #define BITMAP_H
@@ -26,6 +29,8 @@ class bitmap
         pixel * color_arr;
 
         void fill_pixels();
+
+        bool read_file(string);
 
         unsigned int get_H();
         unsigned int get_W();
