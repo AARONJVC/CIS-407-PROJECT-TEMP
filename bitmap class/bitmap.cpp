@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include <stdexcept>
 #include "string"
-#include "fstream"
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -55,14 +56,19 @@ void bitmap::fill_pixels()
 
 bool bitmap::read_file(string filename)
 {
+    ifstream read_bmp;
 
+    read_bmp.open(filename);
 
+    char test;
 
+    cin >> test;
 
+    read_bmp.close();
 
+    printf("\n%c\n", test);
 
-
-    return true;
+    return 0;
 }
 
 unsigned int bitmap::get_H()

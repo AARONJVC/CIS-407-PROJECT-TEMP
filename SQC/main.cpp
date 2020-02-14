@@ -122,6 +122,13 @@ void bmp_printing(unsigned int h, unsigned int w)
 
 }
 
+bool bmp_read_test(string filename)
+{
+    bitmap read_test = bitmap(2, 2, 'T');
+
+    return read_test.read_file(filename);
+}
+
 int main()
 {
     //cout << "Hello world!" << endl;
@@ -130,22 +137,23 @@ int main()
 
     //bmp_init_print_test();
 
-    bmp_printing(5, 5);
+    //bmp_printing(5, 5);
 
-    bmp_printing(1, 1);
+    //bmp_printing(1, 1);
 
-    bmp_printing(0, 0);
+    //bmp_printing(0, 0);
 
-    bmp_printing(0, 5);
+    //bmp_printing(0, 5);
 
-    bmp_printing(5, 0);
+    //bmp_printing(5, 0);
 
-    bmp_printing(2, 1);
+    //bmp_printing(2, 1);
 
-    bmp_printing(4, 7);
+    //bmp_printing(4, 7);
 
+    printf("\nExpect 41\n");
 
-
+    bmp_read_test("test_file.txt");
 
     return 0;
 }
