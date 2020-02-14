@@ -58,14 +58,14 @@ bool bitmap::read_file(string filename)
 {
     fstream read_bmp(filename, fstream::in);
 
-    char test;
+    unsigned char test;
     int i = 0;
 
     while(read_bmp >> noskipws >> hex >> test)
     {
         i++;
 
-        printf("%X ", test);
+        printf("%02X ", test);
 
         if((i % 16) == 0)
         {

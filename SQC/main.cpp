@@ -153,7 +153,7 @@ int main()
 
     printf("\nExpect 41\n");
 
-    bmp_read_test("test_file.txt");
+    bmp_read_test("../TEST BITMAPS/2x2 24b.bmp");
 
     return 0;
 }
