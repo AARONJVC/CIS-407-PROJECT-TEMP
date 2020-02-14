@@ -151,7 +151,7 @@ int main()
 
     //bmp_printing(4, 7);
 
-    bmp_read_test("../TEST BITMAPS/2x2 24b.bmp");
+    bmp_read_test("../TEST BITMAPS/5x5 24b overwrite.bmp");
 
     return 0;
 }

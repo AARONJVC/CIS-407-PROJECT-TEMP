@@ -80,13 +80,41 @@ bool bitmap::read_file(string filename)
         cout << endl << "Confirmed BMP file" << endl;
     }
 
+    //BMP encoding stores the file size in little endian format
     unsigned int file_size = test[2] | (test[3] << 8) | (test[4] << 16) | (test[5] << 24);
 
     cout << endl << file_size << endl;
 
+    unsigned int file_offset = test[10] | (test[11] << 8) | (test[12] << 16) | (test[13] << 24);
 
+    cout << endl << file_offset << endl;
 
+    if(file_offset == 54)
+    {
+        cout << endl << "File is not palletized" << endl;
+    }
+    else if(file_offset >= 54)
+    {
+        cout << endl << "File is palletized" << endl;
+    }
+    else
+    {
+        cout << endl << "File error" << endl;
+    }
 
+    int file_width = test[18] | (test[19] << 8) | (test[20] << 16) | (test[21] << 24);
+
+    int file_height = test[22] | (test[23] << 8) | (test[24] << 16) | (test[25] << 24);
+
+    unsigned int bpp = test[28] | (test[29] << 8);
+
+    cout << endl << file_width << endl;
+    cout << endl << file_height << endl;
+    cout << endl << bpp << endl;
+
+    unsigned int total_colors = test[46] | (test[47] << 8) | (test[48] << 16) | (test[49] << 24);
+
+    cout << endl << total_colors << endl;
 
     read_bmp.close();
 
