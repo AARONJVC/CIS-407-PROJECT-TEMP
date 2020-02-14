@@ -58,9 +58,16 @@ bool bitmap::read_file(string filename)
 {
     fstream read_bmp(filename, fstream::in);
 
-    unsigned char test;
-    int i = 0;
+    int length = 54;
 
+    unsigned char test[length];
+
+    for(int i = 0; i < length; i++)
+    {
+        read_bmp >> noskipws >> hex >> test[i];
+    }
+
+    /*
     while(read_bmp >> noskipws >> hex >> test)
     {
         i++;
@@ -72,6 +79,7 @@ bool bitmap::read_file(string filename)
             printf("\n");
         }
     }
+    */
 
 
 
@@ -90,6 +98,16 @@ bool bitmap::read_file(string filename)
     //printf("\nchar read\n");
 
     read_bmp.close();
+
+    for(int j = 0; j < length; j++)
+    {
+        if((j % 16) == 0)
+        {
+            printf("\n");
+        }
+
+        printf("%02X ", test[j]);
+    }
 
     //printf("\nfile closed\n");
 
