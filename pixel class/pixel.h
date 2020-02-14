@@ -24,6 +24,8 @@ class pixel
 
         ~pixel();
 
+        pixel operator ^ (pixel &);
+
     private:
 
         unsigned char R;

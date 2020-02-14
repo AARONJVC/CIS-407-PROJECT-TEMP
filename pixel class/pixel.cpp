@@ -73,4 +73,20 @@ pixel::~pixel()
     //dtor
 }
 
+//not standard subtraction, calculates absolute value difference between pixel values!
+pixel pixel::operator ^ (pixel &operand2)
+{
+    pixel difference = pixel('0','0','0');
+
+    difference.R = this->R ^ operand2.R;
+
+    difference.G = this->G ^ operand2.G;
+
+    difference.B = this->B ^ operand2.B;
+
+    return difference;
+}
+
+
+
 
