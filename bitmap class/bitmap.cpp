@@ -141,8 +141,10 @@ bool bitmap::read_file(string filename)
         //bmp pads each scan line to a multiple of 4 bytes, this determines how many bytes it will pad given the image width
         int scan_pad_amount = 4 - ((bytes_per_pixel * file_width) % 4);
 
+        int byte_width = bytes_per_pixel * file_width;
+
         //each scan line will be this long
-        int padded_byte_width = (bytes_per_pixel * file_width) + scan_pad_amount;
+        int padded_byte_width = byte_width + scan_pad_amount;
 
         unsigned char ** pixel_channels = new unsigned char * [file_height];
 
@@ -153,7 +155,9 @@ bool bitmap::read_file(string filename)
 
         //unsigned int num_pixel_chars = padded_width * file_height;
 
-        for(int i = 0; i < file_height; i++)
+        //bmp scanlines start in the lower left corner and traverse left to right, upward
+        //I want them to start in upper left corner for readability
+        for(int i = file_height - 1; i >= 0; i--)
         {
             for(int j = 0; j < padded_byte_width; j++)
             {
@@ -170,6 +174,34 @@ bool bitmap::read_file(string filename)
 
             printf("\n");
         }
+
+
+        //now to convert these chars to pixels...
+
+        pixel_arr = new pixel*[file_height];
+
+        for(int i = 0; i < file_height; i++)
+        {
+            pixel_arr[i] = new pixel[file_width];
+        }
+
+
+        for(int i = 0; i < file_height; i++)
+        {
+            //this should skip the padded bytes on the ends
+            //also traverse in multiples of three (only supported bytes-per-pixel amount so far...)
+            for(int j = 0; j < file_width; j++)
+            {
+                int k = j * 3;
+
+                pixel_arr[i][j] = pixel(pixel_channels[i][k + 2], pixel_channels[i][k + 1], pixel_channels[i][k]);
+
+                //pixel_arr[i][j].setB();
+                //pixel_arr[i][j].setG(pixel_channels[i][k + 1]);
+                //pixel_arr[i][j].setR(pixel_channels[i][k + 2]);
+            }
+        }
+
 
 
     }

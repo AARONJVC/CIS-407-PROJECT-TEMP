@@ -126,7 +126,14 @@ bool bmp_read_test(string filename)
 {
     bitmap read_test = bitmap(2, 2, 'T');
 
-    return read_test.read_file(filename);
+    bool success = read_test.read_file(filename);
+
+    if(success)
+    {
+        read_test.print();
+    }
+
+    return success;
 }
 
 int main()
