@@ -89,19 +89,6 @@ bool bitmap::read_file(string filename)
 
     cout << endl << file_offset << endl;
 
-    if(file_offset == 54)
-    {
-        cout << endl << "File is not palletized" << endl;
-    }
-    else if(file_offset >= 54)
-    {
-        cout << endl << "File is palletized" << endl;
-    }
-    else
-    {
-        cout << endl << "File error" << endl;
-    }
-
     int file_width = test[18] | (test[19] << 8) | (test[20] << 16) | (test[21] << 24);
 
     int file_height = test[22] | (test[23] << 8) | (test[24] << 16) | (test[25] << 24);
@@ -116,7 +103,22 @@ bool bitmap::read_file(string filename)
 
     cout << endl << total_colors << endl;
 
-    read_bmp.close();
+    bool read_more = true;
+
+    if(file_offset == HEADER_LENGTH)
+    {
+        cout << endl << "File is not palletized" << endl;
+    }
+    else if(file_offset >= HEADER_LENGTH)
+    {
+        cout << endl << "File is palletized" << endl;
+    }
+    else
+    {
+        cout << endl << "File error" << endl;
+
+        read_more = false;
+    }
 
     for(int j = 0; j < HEADER_LENGTH; j++)
     {
@@ -128,13 +130,54 @@ bool bitmap::read_file(string filename)
         printf("%02X ", test[j]);
     }
 
-    //printf("\nfile closed\n");
+    printf("\n\n");
 
-    //printf("\n%c\n", test);
+    if(read_more)
+    {
 
-    //cout << endl << test << endl;
 
-    //printf("\nchar printed\n");
+        unsigned int bytes_per_pixel = (unsigned int)(bpp / 8);
+
+        //bmp pads each scan line to a multiple of 4 bytes, this determines how many bytes it will pad given the image width
+        int scan_pad_amount = 4 - ((bytes_per_pixel * file_width) % 4);
+
+        //each scan line will be this long
+        int padded_byte_width = (bytes_per_pixel * file_width) + scan_pad_amount;
+
+        unsigned char ** pixel_channels = new unsigned char * [file_height];
+
+        for(int i = 0; i < file_height; i++)
+        {
+            pixel_channels[i] = new unsigned char[padded_byte_width];
+        }
+
+        //unsigned int num_pixel_chars = padded_width * file_height;
+
+        for(int i = 0; i < file_height; i++)
+        {
+            for(int j = 0; j < padded_byte_width; j++)
+            {
+                read_bmp >> noskipws >> hex >> pixel_channels[i][j];
+            }
+        }
+
+        for(int i = 0; i < file_height; i++)
+        {
+            for(int j = 0; j < padded_byte_width; j++)
+            {
+                printf("%02X ", pixel_channels[i][j]);
+            }
+
+            printf("\n");
+        }
+
+
+    }
+
+    read_bmp.close();
+
+    width = file_width;
+    height = file_height;
 
     return 0;
 }
