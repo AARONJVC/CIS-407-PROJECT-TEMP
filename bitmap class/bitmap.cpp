@@ -230,6 +230,26 @@ bool bitmap::read_file(string filename)
     return true;
 }
 
+bool write_file(string new_name)
+{
+    fstream write_bmp(filename, fstream::out);
+
+    //unsigned char test[HEADER_LENGTH];
+
+    for(int i = 0; i < HEADER_LENGTH; i++)
+    {
+        read_bmp >> noskipws >> hex >> test[i];
+    }
+
+
+    return true;
+}
+
+
+
+
+
+
 unsigned int bitmap::get_H()
 {
     return height;

@@ -32,6 +32,8 @@ class bitmap
 
         bool read_file(string);
 
+        bool write_file(string);
+
         unsigned int get_H();
         unsigned int get_W();
         unsigned int get_N();

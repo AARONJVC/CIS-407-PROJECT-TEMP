@@ -160,27 +160,27 @@ int main()
 
     //bmp_printing(4, 7);
 
-    //bmp_read_test("../TEST BITMAPS/5x5 24b overwrite.bmp");
+    bmp_read_test("../TEST BITMAPS/5x5 24b overwrite.bmp");
 
-    pixel p1 = pixel('A', 'A', 'A');
-
-    pixel p2 = pixel('Z', 'Z', 'Z');
-
-    pixel result = p1 ^ p2;
-
-    result.print_hex();
-
-    result = p2 ^ p1;
-
-    result.print_hex();
-
-    result = p2 ^ p2;
-
-    result.print_hex();
-
-    result = (p2 ^ p2) ^ p1;
-
-    result.print_hex();
+//    pixel p1 = pixel('A', 'A', 'A');
+//
+//    pixel p2 = pixel('Z', 'Z', 'Z');
+//
+//    pixel result = p1 ^ p2;
+//
+//    result.print_hex();
+//
+//    result = p2 ^ p1;
+//
+//    result.print_hex();
+//
+//    result = p2 ^ p2;
+//
+//    result.print_hex();
+//
+//    result = (p2 ^ p2) ^ p1;
+//
+//    result.print_hex();
 
 
 
