@@ -45,6 +45,11 @@ class bitmap
 
     private:
 
+        unsigned int filesize;
+        unsigned int headeroffset;
+        unsigned int bitsperpixel;
+        unsigned int importantcolors;
+
         //The width and height of the image
         //shouldn't ever be a reason to modify these once they are initialized in the constructor, so no setters
         unsigned int height;
@@ -52,14 +57,6 @@ class bitmap
         //these are only used if the bmp is 8bit or 4bit palletized
         unsigned int numcolors;
         char encoding;
-
-        //private helper functions that are too dangerous to be public
-
-        //pixel ** malloc_pixels(unsigned int, unsigned int);
-        //void free_pixels();
-
-        //pixel * malloc_colors();
-        //void free_colors();
 };
 
 #endif // BITMAP_H

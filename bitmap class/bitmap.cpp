@@ -20,6 +20,14 @@ bitmap::bitmap(unsigned int h, unsigned int w, char e)
 
     encoding = e;
 
+    filesize = 0;
+
+    headeroffset = 54;
+
+    importantcolors = 0;
+
+    bitsperpixel = 0;
+
     if(h == 0 || w == 0)
     {
         throw 20;
@@ -92,6 +100,8 @@ bool bitmap::read_file(string filename)
     unsigned int bpp = test[28] | (test[29] << 8);
 
     unsigned int total_colors = test[46] | (test[47] << 8) | (test[48] << 16) | (test[49] << 24);
+
+    unsigned int important_colors = test[50] | (test[51] << 8) | (test[52] << 16) | (test[53] << 24);
 
     cout << endl << "Bytes: " << file_size << endl;
     cout << endl << "Header bytes: " << file_offset << endl;
@@ -222,10 +232,12 @@ bool bitmap::read_file(string filename)
 
     read_bmp.close();
 
-
-
+    bitsperpixel = bpp;
+    filesize = file_size;
+    headeroffset = file_offset;
     width = file_width;
     height = file_height;
+    importantcolors = important_colors;
 
     return true;
 }
@@ -236,7 +248,11 @@ bool bitmap::write_file(string new_name)
 
     write_bmp.open(new_name, fstream::app);
 
-    write_bmp << "HELLO" << endl;
+    write_bmp << hex << 'B' << 'M' << endl;
+
+    //write total bytes as little-endian unsigned int
+
+    //
 
     write_bmp.close();
 
@@ -284,85 +300,6 @@ void bitmap::print()
         printf("\n\n");
     }
 }
-
-/*
-//allocates memory for a height * width array of pixels
-pixel ** bitmap::malloc_pixels(unsigned int h, unsigned int w)
-{
-    if(h != 0 && w != 0)
-    {
-        this->pixel_arr = (pixel**)malloc(sizeof(pixel *) * h);
-
-        if(this->pixel_arr == nullptr)
-        {
-            printf("\n\nMALLOC ERROR IN A WIDTH ARRAY\n\n");
-
-            return nullptr;
-        }
-
-        for(unsigned int i = 0; i < h; i++)
-        {
-            pixel * temp = (pixel*)malloc(sizeof(pixel) * w);
-
-            this->pixel_arr[i] = temp;
-
-            if(temp == nullptr)
-            {
-                printf("\n\nMALLOC ERROR IN A WIDTH ARRAY\n\n");
-            }
-        }
-
-        return this->pixel_arr;
-    }
-    else
-    {
-        return nullptr;
-    }
-}
-
-void bitmap::free_pixels()
-{
-    for(unsigned int i = 0; i < height; i++)
-    {
-        pixel * temp = this->pixel_arr[i];
-
-        free(temp);
-
-
-
-        temp = nullptr;
-
-
-        if(temp != nullptr)
-        {
-            printf("\n\nFREE ERROR IN A WIDTH ARRAY\n\n");
-        }
-
-    }
-
-    free(this->pixel_arr);
-
-
-
-    if(this->pixel_arr != nullptr)
-    {
-        printf("\n\nFREE ERROR IN A HEIGHT ARRAY\n\n");
-    }
-
-}
-
-
-pixel * bitmap::malloc_colors()
-{
-    return nullptr;
-}
-
-
-void bitmap::free_colors()
-{
-
-}
-*/
 
 bitmap::~bitmap()
 {
