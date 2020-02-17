@@ -138,6 +138,21 @@ bool bmp_read_test(string filename)
     return success;
 }
 
+bool bmp_write_test(string new_name)
+{
+    bitmap write_test = bitmap(2, 2, 'T');
+
+    bool success = write_test.write_file(new_name);
+
+    if(success)
+    {
+        printf("\nsucceeded\n");
+    }
+
+    return success;
+}
+
+
 int main()
 {
     //cout << "Hello world!" << endl;
@@ -160,7 +175,9 @@ int main()
 
     //bmp_printing(4, 7);
 
-    bmp_read_test("../TEST BITMAPS/5x5 24b overwrite.bmp");
+    //bmp_read_test("../TEST BITMAPS/5x5 24b overwrite.bmp");
+
+    bmp_write_test("../TEST OUTPUT/hello.txt");
 
 //    pixel p1 = pixel('A', 'A', 'A');
 //

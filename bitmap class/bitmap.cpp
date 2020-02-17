@@ -230,17 +230,15 @@ bool bitmap::read_file(string filename)
     return true;
 }
 
-bool write_file(string new_name)
+bool bitmap::write_file(string new_name)
 {
-    fstream write_bmp(filename, fstream::out);
+    fstream write_bmp;
 
-    //unsigned char test[HEADER_LENGTH];
+    write_bmp.open(new_name, fstream::app);
 
-    for(int i = 0; i < HEADER_LENGTH; i++)
-    {
-        read_bmp >> noskipws >> hex >> test[i];
-    }
+    write_bmp << "HELLO" << endl;
 
+    write_bmp.close();
 
     return true;
 }
