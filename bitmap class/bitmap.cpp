@@ -264,109 +264,58 @@ bool bitmap::write_file(string new_name)
 
     unsigned char test[HEADER_LENGTH];
 
+    //each function call converts a bitmap attribute into unsigned chars in little-endian format for writing to the file
+
     test[0] = 'B';
 
     test[1] = 'M';
 
-    //convert filesize back into little-endian chars and store in the output array
-    unsigned int file_size = filesize;
+    unint_to_LE_chars(filesize, 2, 6, test);
 
-    for(int i = 2; i < 6; i++)
-    {
-        test[i] = file_size;
+    unint_to_LE_chars(0, 6, 10, test);
 
-        file_size >>= 8;
-    }
-
-    //fill the reserved space with default value = 0
-    for(int i = 6; i < 10; i++)
-    {
-        test[i] = 0x00;
-    }
-
-    unsigned int file_offset = headeroffset;
-
-    for(int i = 10; i < 14; i++)
-    {
-        test[i] = file_offset;
-
-        file_offset >>= 8;
-    }
-
-    //image info header size, which is always 40
-//    unsigned int header_size = 40;
-//
-//    for(int i = 14; i < 18; i++)
-//    {
-//        test[i] = header_size;
-//
-//        header_size >>= 8;
-//    }
-
-//    int file_width = width;
-//
-//    for(int i = 18; i < 22; i++)
-//    {
-//        test[i] = file_width;
-//
-//        file_width >>= 8;
-//    }
+    unint_to_LE_chars(headeroffset, 10, 14, test);
 
     unint_to_LE_chars(40, 14, 18, test);
 
     unint_to_LE_chars(width, 18, 22, test);
 
-    int file_height = test[22] | (test[23] << 8) | (test[24] << 16) | (test[25] << 24);
+    //image height in pixels
+    unint_to_LE_chars(height, 22, 26, test);
 
-    unsigned int bpp = test[28] | (test[29] << 8);
+    //Planes: default number is 1, should always be 1
+    unint_to_LE_chars(1, 26, 28, test);
 
-    unsigned int total_colors = test[46] | (test[47] << 8) | (test[48] << 16) | (test[49] << 24);
+    //bits per pixel
+    unint_to_LE_chars(bitsperpixel, 28, 30, test);
 
-    unsigned int important_colors = test[50] | (test[51] << 8) | (test[52] << 16) | (test[53] << 24);
+    //compression, should be default 0
+    unint_to_LE_chars(0, 30, 34, test);
+
+    //image size, default value 0 because there is no compression
+    unint_to_LE_chars(0, 34, 38, test);
+
+    //x-dimension resolution, default 0
+    unint_to_LE_chars(0, 38, 42, test);
+
+    //y-dimension resolution, default 0
+    unint_to_LE_chars(0, 42, 46, test);
+
+    //number of entries in the color palette
+    unint_to_LE_chars(numcolors, 46, 50, test);
+
+    //number of "important" colors
+    unint_to_LE_chars(importantcolors, 50, 54, test);
 
 
 
 
     for(int i = 0; i < HEADER_LENGTH; i++)
     {
-        read_bmp >> noskipws >> hex >> test[i];
+        write_bmp << hex << test[i];
     }
 
-    cout << endl << "Bytes: " << file_size << endl;
-    cout << endl << "Header bytes: " << file_offset << endl;
-    cout << endl << "Pixel width: " << file_width << endl;
-    cout << endl << "Pixel height: " << file_height << endl;
-    cout << endl << "Encoding: " << bpp << "b" << endl;
-    cout << endl << "Palette colors: " << total_colors << endl;
 
-    bool read_more = true;
-
-    if(file_offset == HEADER_LENGTH)
-    {
-        cout << endl << "File is not palletized" << endl;
-    }
-    else if(file_offset >= HEADER_LENGTH)
-    {
-        cout << endl << "File is palletized" << endl;
-    }
-    else
-    {
-        cout << endl << "File error" << endl;
-
-        read_more = false;
-    }
-
-    for(int j = 0; j < HEADER_LENGTH; j++)
-    {
-        if((j % 16) == 0)
-        {
-            printf("\n");
-        }
-
-        printf("%02X ", test[j]);
-    }
-
-    printf("\n\n");
 
     if(read_more)
     {

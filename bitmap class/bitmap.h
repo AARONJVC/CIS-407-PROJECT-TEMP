@@ -57,6 +57,8 @@ class bitmap
         //these are only used if the bmp is 8bit or 4bit palletized
         unsigned int numcolors;
         char encoding;
+
+        void unint_to_LE_chars(unsigned int, int, int, *unsigned char);
 };
 
 #endif // BITMAP_H
