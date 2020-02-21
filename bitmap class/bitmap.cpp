@@ -18,8 +18,6 @@ bitmap::bitmap(unsigned int h, unsigned int w, char e)
 
     numcolors = 0;
 
-    //encoding = e;
-
     filesize = 0;
 
     headeroffset = 54;
@@ -39,10 +37,12 @@ bitmap::bitmap(unsigned int h, unsigned int w, char e)
         width = w;
     }
 
+    /*
     if(e != TWENTYFOUR_BIT_RGB && e != SIXTEEN_BIT_RGB && e != EIGHT_BIT_PALLETIZED && e != FOUR_BIT_PALLETIZED)
     {
         throw 30;
     }
+    */
 
 }
 
@@ -246,21 +246,8 @@ bool bitmap::write_file(string new_name)
 {
     fstream write_bmp;
 
-    write_bmp.open(new_name, fstream::app);
-
-    write_bmp << hex << 'B' << 'M' << endl;
-
+    write_bmp.open(new_name, fstream::out);
     //write total bytes as little-endian unsigned int
-
-    //
-
-
-
-
-
-
-
-
 
     unsigned char test[HEADER_LENGTH];
 

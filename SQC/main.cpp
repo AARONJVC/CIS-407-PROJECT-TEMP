@@ -175,7 +175,7 @@ int main()
 
     //bmp_printing(4, 7);
 
-    bmp_read_test("../TEST BITMAPS/5x5 24b overwrite.bmp");
+    //bmp_read_test("../TEST BITMAPS/5x5 24b overwrite.bmp");
 
     bmp_write_test("../TEST OUTPUT/hello2.txt");
 
