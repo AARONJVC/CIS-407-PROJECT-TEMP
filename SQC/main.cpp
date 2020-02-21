@@ -169,6 +169,8 @@ bool bmp_read_write_test(string old_name, string new_name)
         {
             printf("\nwrite succeeded\n");
 
+            rw_test.read_file(new_name);
+
             return true;
         }
     }
@@ -203,7 +205,7 @@ int main()
 
 //    bmp_write_test("../TEST OUTPUT/hello2.txt");
 
-    bmp_read_write_test("../TEST BITMAPS/2x2 24b.bmp", "../TEST OUTPUT/testoutput2x2.bmp");
+    bmp_read_write_test("../TEST BITMAPS/5x5 24b overwrite.bmp", "../TEST OUTPUT/testoutput5x5.bmp");
 
 //    pixel p1 = pixel('A', 'A', 'A');
 //

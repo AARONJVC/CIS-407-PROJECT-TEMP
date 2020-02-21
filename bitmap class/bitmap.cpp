@@ -302,6 +302,7 @@ bool bitmap::write_file(string new_name)
         write_bmp << hex << test[i];
     }
 
+
     unsigned int bytes_per_pixel = (unsigned int)(bitsperpixel / 8);
 
     //bmp pads each scan line to a multiple of 4 bytes, this determines how many bytes it will pad given the image width
@@ -322,17 +323,32 @@ bool bitmap::write_file(string new_name)
     //This writes each RGB value in the right order, then pads the line
     for(int i = height - 1; i >= 0; i--)
     {
+        /*
         for(int j = 0; j < byte_width; j+=3)
         {
             pixel_channels[i][j] = pixel_arr[i][j].getB();
+            //pixel_channels[i][j] = 0xCC;
         }
         for(int j = 1; j < byte_width; j+=3)
         {
             pixel_channels[i][j] = pixel_arr[i][j].getG();
+            //pixel_channels[i][j] = 0xBB;
         }
         for(int j = 2; j < byte_width; j+=3)
         {
             pixel_channels[i][j] = pixel_arr[i][j].getR();
+            //pixel_channels[i][j] = 0xAA;
+        }
+        */
+
+        for(unsigned int j = 0; j < width; j++)
+        {
+            int k = j * 3;
+
+            pixel_channels[i][k] = pixel_arr[i][j].getB();
+            pixel_channels[i][k + 1] = pixel_arr[i][j].getG();
+            pixel_channels[i][k + 2] = pixel_arr[i][j].getR();
+
         }
 
         for(int p = byte_width; p < padded_byte_width; p++)
@@ -342,7 +358,7 @@ bool bitmap::write_file(string new_name)
     }
 
     //Write all the pixel data to the bmp
-    for(unsigned int i = 0; i < height; i++)
+    for(int i = height - 1; i >= 0; i--)
     {
         for(int j = 0; j < padded_byte_width; j++)
         {
@@ -362,11 +378,6 @@ bool bitmap::write_file(string new_name)
 
     return true;
 }
-
-
-
-
-
 
 unsigned int bitmap::get_H()
 {

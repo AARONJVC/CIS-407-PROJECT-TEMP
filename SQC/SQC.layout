@@ -2,9 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="..\char_data class\char_data.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\pixel class\pixel.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="101" topLine="0" />
+			<Cursor1 position="709" topLine="38" />
+		</Cursor>
+	</File>
+	<File name="..\pixel class\pixel.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="579" topLine="8" />
 		</Cursor>
 	</File>
 	<File name="..\tools and experiments\pixel testing.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -17,38 +22,33 @@
 			<Cursor1 position="2885" topLine="117" />
 		</Cursor>
 	</File>
+	<File name="..\bitmap class\bitmap.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9473" topLine="308" />
+		</Cursor>
+	</File>
 	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3617" topLine="120" />
+			<Cursor1 position="4202" topLine="145" />
 		</Cursor>
 		<Folding>
 			<Collapse line="8" />
 			<Collapse line="92" />
 		</Folding>
 	</File>
-	<File name="..\bitmap class\bitmap.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="..\char_data class\char_data.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6272" topLine="232" />
+			<Cursor1 position="101" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="..\bitmap class\bitmap.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1100" topLine="28" />
-		</Cursor>
-	</File>
-	<File name="..\pixel class\pixel.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="561" topLine="9" />
+			<Cursor1 position="682" topLine="10" />
 		</Cursor>
 	</File>
 	<File name="..\char_data class\char_data.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="191" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="..\pixel class\pixel.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1276" topLine="66" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
