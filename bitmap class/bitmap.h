@@ -37,7 +37,7 @@ class bitmap
         unsigned int get_H();
         unsigned int get_W();
         unsigned int get_N();
-        char get_E();
+        unsigned int get_encoding();
 
         void print();
 
@@ -56,9 +56,9 @@ class bitmap
         unsigned int width;
         //these are only used if the bmp is 8bit or 4bit palletized
         unsigned int numcolors;
-        char encoding;
+        //char encoding;
 
-        void unint_to_LE_chars(unsigned int, int, int, *unsigned char);
+        void unint_to_LE_chars(unsigned int, int, int, unsigned char *);
 };
 
 #endif // BITMAP_H

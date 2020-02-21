@@ -56,7 +56,7 @@ void bitmap_init_test(unsigned int h, unsigned int w, char e)
 
         printf("\nExpect width: %i\nActual width: %i\n", w, test_bmp.get_W());
 
-        printf("\nExpect encoding: %c\nActual encoding: %c\n", e, test_bmp.get_E());
+        printf("\nExpect encoding: %c\nActual encoding: %c\n", e, test_bmp.get_encoding());
 
         printf("\nExpect numcolors: %i\nActual numcolors: %i\n", 0, test_bmp.get_N());
 
