@@ -315,11 +315,6 @@ bool bitmap::write_file(string new_name)
         write_bmp << hex << test[i];
     }
 
-
-
-
-
-
     unsigned int bytes_per_pixel = (unsigned int)(bitsperpixel / 8);
 
     //bmp pads each scan line to a multiple of 4 bytes, this determines how many bytes it will pad given the image width
@@ -337,18 +332,7 @@ bool bitmap::write_file(string new_name)
         pixel_channels[i] = new unsigned char[padded_byte_width];
     }
 
-
-
-
-
-
-    //unsigned int num_pixel_chars = padded_width * file_height;
-
-    //bmp scanlines start in the lower left corner and traverse left to right, upward
-    //I want them to start in upper left corner for readability
-
-
-
+    //This writes each RGB value in the right order, then pads the line
     for(int i = height - 1; i >= 0; i--)
     {
         for(int j = 0; j < byte_width; j+=3)
@@ -370,53 +354,16 @@ bool bitmap::write_file(string new_name)
         }
     }
 
-//    for(int i = 0; i < file_height; i++)
-//    {
-//        for(int j = 0; j < padded_byte_width; j++)
-//        {
-//            printf("%02X ", pixel_channels[i][j]);
-//        }
-//
-//        printf("\n");
-//    }
+    //Write all the pixel data to the bmp
+    for(unsigned int i = 0; i < height; i++)
+    {
+        for(int j = 0; j < padded_byte_width; j++)
+        {
+            write_bmp << hex << pixel_channels[i][j];
+        }
+    }
 
-//    printf("\n\n");
-//
-//    for(int i = 0; i < file_height; i++)
-//    {
-//        for(int j = 0; j < byte_width; j++)
-//        {
-//            printf("%02X ", pixel_channels[i][j]);
-//        }
-//
-//        printf("\n");
-//    }
-
-
-    //now to convert these chars to pixels...
-
-//    pixel_arr = new pixel*[height];
-//
-//    for(int i = 0; i < height; i++)
-//    {
-//        pixel_arr[i] = new pixel[file_width];
-//    }
-
-
-//    for(int i = 0; i < file_height; i++)
-//    {
-//        //this should skip the padded bytes on the ends
-//        //also traverse in multiples of three (only supported bytes-per-pixel amount so far...)
-//        for(int j = 0; j < file_width; j++)
-//        {
-//            int k = j * 3;
-//
-//            pixel_arr[i][j] = pixel((pixel_channels[i][k + 2]), (pixel_channels[i][k + 1]), (pixel_channels[i][k]));
-//
-//            //printf("\n%02X %02X %02X\n", (pixel_channels[i][k + 2]), (pixel_channels[i][k + 1]), (pixel_channels[i][k]));
-//        }
-//    }
-
+    //free memory
     for(unsigned int i = 0; i < height; i++)
     {
         delete[] pixel_channels[i];
