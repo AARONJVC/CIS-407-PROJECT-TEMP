@@ -131,13 +131,13 @@ bool bitmap::read_file(string filename)
     {
         if((j % 16) == 0)
         {
-            printf("\n");
+            //printf("\n");
         }
 
-        printf("%02X ", test[j]);
+        //printf("%02X ", test[j]);
     }
 
-    printf("\n\n");
+    //printf("\n\n");
 
     if(read_more)
     {
@@ -176,22 +176,22 @@ bool bitmap::read_file(string filename)
         {
             for(int j = 0; j < padded_byte_width; j++)
             {
-                printf("%02X ", pixel_channels[i][j]);
+                //printf("%02X ", pixel_channels[i][j]);
             }
 
-            printf("\n");
+            //printf("\n");
         }
 
-        printf("\n\n");
+        //printf("\n\n");
 
         for(int i = 0; i < file_height; i++)
         {
             for(int j = 0; j < byte_width; j++)
             {
-                printf("%02X ", pixel_channels[i][j]);
+                //printf("%02X ", pixel_channels[i][j]);
             }
 
-            printf("\n");
+            //printf("\n");
         }
 
 
@@ -350,6 +350,8 @@ bool bitmap::write_file(string new_name)
             pixel_channels[i][k + 2] = pixel_arr[i][j].getR();
 
         }
+
+
 
         for(int p = byte_width; p < padded_byte_width; p++)
         {

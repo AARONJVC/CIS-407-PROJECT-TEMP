@@ -130,9 +130,9 @@ bool bmp_read_test(string filename)
 
     if(success)
     {
-        printf("\n\n");
+        //printf("\n\n");
 
-        read_test.print();
+        //read_test.print();
     }
 
     return success;
@@ -205,7 +205,7 @@ int main()
 
 //    bmp_write_test("../TEST OUTPUT/hello2.txt");
 
-    bmp_read_write_test("../TEST BITMAPS/5x5 24b overwrite.bmp", "../TEST OUTPUT/testoutput5x5.bmp");
+    bmp_read_write_test("../TEST BITMAPS/1000x1000 24b rainbow.bmp", "../TEST OUTPUT/1000x1000 rainbow OUT.bmp");
 
 //    pixel p1 = pixel('A', 'A', 'A');
 //
