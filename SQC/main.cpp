@@ -205,7 +205,7 @@ int main()
 
 //    bmp_write_test("../TEST OUTPUT/hello2.txt");
 
-    bmp_read_write_test("../TEST BITMAPS/1000x1000 24b rainbow.bmp", "../TEST OUTPUT/1000x1000 rainbow OUT.bmp");
+    bmp_read_write_test("../TEST BITMAPS/100x100 24b overwrite.bmp", "../TEST OUTPUT/100x100 24b OUTmodfix.bmp");
 
 //    pixel p1 = pixel('A', 'A', 'A');
 //

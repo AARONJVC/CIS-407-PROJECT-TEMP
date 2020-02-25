@@ -146,7 +146,7 @@ bool bitmap::read_file(string filename)
         unsigned int bytes_per_pixel = (unsigned int)(bpp / 8);
 
         //bmp pads each scan line to a multiple of 4 bytes, this determines how many bytes it will pad given the image width
-        int scan_pad_amount = 4 - ((bytes_per_pixel * file_width) % 4);
+        int scan_pad_amount = (4 - ((bytes_per_pixel * file_width) % 4)) % 4;
 
         int byte_width = bytes_per_pixel * file_width;
 
@@ -306,7 +306,7 @@ bool bitmap::write_file(string new_name)
     unsigned int bytes_per_pixel = (unsigned int)(bitsperpixel / 8);
 
     //bmp pads each scan line to a multiple of 4 bytes, this determines how many bytes it will pad given the image width
-    int scan_pad_amount = 4 - ((bytes_per_pixel * width) % 4);
+    int scan_pad_amount = (4 - ((bytes_per_pixel * width) % 4)) % 4;
 
     int byte_width = bytes_per_pixel * width;
 
